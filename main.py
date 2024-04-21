@@ -9,7 +9,7 @@ from powerups import Powerup
 
 # Text
 def draw_text(text,x,y,size):
-    font = pygame.font.Font('Python/pygame/daybreak/PNG/Font/joystix.ttf', size)
+    font = pygame.font.Font('PNG/Font/joystix.ttf', size)
     image = font.render(text, True, 'black')
     screen.blit(image, (x,y))
 
@@ -28,7 +28,7 @@ class Player(pygame.sprite.Sprite):
 
         # Sprite animation --- Bugs unresolved
         for i in range(self.num_of_frames):
-            self.animation_list.append(pygame.image.load(f'Python/pygame/daybreak/PNG/Players/{self.move_type}/{i}.png').convert_alpha())
+            self.animation_list.append(pygame.image.load(f'PNG/Players/{self.move_type}/{i}.png').convert_alpha())
         self.current_frame = 0
         self.image = self.animation_list[int(self.current_frame)]
         self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * 0.41), int(self.image.get_height() * 0.41)))
@@ -95,7 +95,7 @@ class Player(pygame.sprite.Sprite):
           
         # Jumping animation
         if self.vel_y < 0:
-            self.image = pygame.image.load(f'Python/pygame/daybreak/PNG/Players/jump/0.png').convert_alpha()
+            self.image = pygame.image.load(f'PNG/Players/jump/0.png').convert_alpha()
             self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * 0.41), int(self.image.get_height() * 0.41)))
         
         # Jetpack jump
@@ -185,7 +185,7 @@ class Player(pygame.sprite.Sprite):
 
         if self.health <= 0:
             self.health = 0
-            self.image = pygame.image.load(f'Python/pygame/daybreak/PNG/Players/hurt/0.png').convert_alpha()
+            self.image = pygame.image.load(f'PNG/Players/hurt/0.png').convert_alpha()
             self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * 0.41), int(self.image.get_height() * 0.41)))
     
     def hurt(self):
@@ -217,7 +217,7 @@ class Player(pygame.sprite.Sprite):
 
     def jetpack_powerup(self):
         if self.hit_jetpack:
-            self.image = pygame.image.load('Python/pygame/daybreak/PNG/Powerups/jetpack_player.png').convert_alpha()
+            self.image = pygame.image.load('PNG/Powerups/jetpack_player.png').convert_alpha()
             self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * 0.41), int(self.image.get_height() * 0.41)))
             if self.hit:
                 self.hurt()
@@ -243,7 +243,7 @@ class Enemy(pygame.sprite.Sprite):
 
         # Sprite animation
         for i in range(self.num_of_frames):
-            self.animation_list.append(pygame.image.load(f'Python/pygame/daybreak/PNG/Enemies/{self.char_type}/{i}.png').convert_alpha())
+            self.animation_list.append(pygame.image.load(f'PNG/Enemies/{self.char_type}/{i}.png').convert_alpha())
         self.current_frame = 0
         self.image = self.animation_list[int(self.current_frame)]
         self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * 0.5),
@@ -310,7 +310,7 @@ class Platform(pygame.sprite.Sprite):
     def __init__(self, x, y, platform_type, move_x):
         super().__init__()
         self.platform_type = platform_type
-        self.img = pygame.image.load(f'Python/pygame/daybreak/PNG/Environment/{self.platform_type}.png').convert_alpha()
+        self.img = pygame.image.load(f'PNG/Environment/{self.platform_type}.png').convert_alpha()
         self.img = pygame.transform.scale(self.img, (int(self.img.get_width() * 0.35),
                                                         int(self.img.get_height() * 0.35)))
         self.rect = self.img.get_rect()
@@ -346,7 +346,7 @@ class Decorations(pygame.sprite.Sprite):
     def __init__(self,x,y, dec_type, show):
         super().__init__()
         self.dec_type = dec_type
-        self.image = pygame.image.load(f'Python/pygame/daybreak/PNG/Static/{self.dec_type}.png').convert_alpha()
+        self.image = pygame.image.load(f'PNG/Static/{self.dec_type}.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * 0.4),
                                                         int(self.image.get_height() * 0.4)))
         self.rect = self.image.get_rect()
