@@ -160,13 +160,13 @@ class Player(pygame.sprite.Sprite):
                             platform.kill()
                             self.score += 10
 
-		# Scrolling to the top of screen
+	# Scrolling to the top of screen
         if self.rect.top <= SCROLL_THRESH:
 		#if player is jumping
             if self.vel_y < 0:
                 scroll = -dy
 
-		# update player position
+	# update player position
         self.rect.x += dx
         self.rect.y += dy + scroll
         
